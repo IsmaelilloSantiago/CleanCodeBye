@@ -20,7 +20,7 @@ public class byeActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.w("llegos","89");
+        Log.w("llegos","on create");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bye);
@@ -34,7 +34,7 @@ public class byeActivity
     */
 
         // do the setup
-        byeScreen.configure(this);
+          byeScreen.configure(this);
 
         if (savedInstanceState == null) {
             presenter.onStart();
@@ -78,7 +78,7 @@ public class byeActivity
         //Log.e(TAG, "onDataUpdated()");
 
         // deal with the data
-        ((TextView) findViewById(R.id.byeMessage)).setText(viewModel.data);
+        ((TextView) findViewById(R.id.byeMessage)).setText(viewModel.byeMessage);
     }
 
 

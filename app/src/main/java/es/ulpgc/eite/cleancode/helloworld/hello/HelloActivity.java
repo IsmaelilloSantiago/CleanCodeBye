@@ -71,7 +71,7 @@ public class HelloActivity
   @Override
   public void navigateToByeScreen() {
     Log.w("llegos","2");
-    Intent a = new Intent(HelloActivity.this, byeActivity.class);
+    Intent a = new Intent(this, byeActivity.class);
     startActivity(a);
 
     Log.w("llegos","5");

@@ -33,7 +33,7 @@ public class byePresenter implements byeContract.Presenter {
         }
 
         // call the model and update the state view.get().displayCheatData(state);
-        state.data = model.getStoredData();
+        state.byeMessage = model.getStoredData();
 
         // use passed state if is necessary
         HelloToByeState savedState = getStateFromPreviousScreen();
@@ -43,7 +43,7 @@ public class byePresenter implements byeContract.Presenter {
             model.onDataFromPreviousScreen(savedState.message);
 
             // update the state if is necessary
-            state.data = savedState.message;
+            state.byeMessage = savedState.message;
         }
     }
 
@@ -52,7 +52,7 @@ public class byePresenter implements byeContract.Presenter {
         // Log.e(TAG, "onRestart()");
 
         // update the model if is necessary
-        model.onRestartScreen(state.data);
+        model.onRestartScreen(state.byeMessage);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class byePresenter implements byeContract.Presenter {
             model.onDataFromNextScreen(savedState.message);
 
             // update the state if is necessary
-            state.data = savedState.message;
+            state.byeMessage = savedState.message;
         }
 
         // call the model and update the state
