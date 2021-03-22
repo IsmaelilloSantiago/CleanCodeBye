@@ -26,6 +26,7 @@ public class HelloActivity
 
   Button sayHelloButton, goByeButton;
   TextView helloMessage;
+  int requestCode = 1;
 
 
   @Override
@@ -35,7 +36,7 @@ public class HelloActivity
 
     getSupportActionBar().setTitle(R.string.hello_screen_title);
 
-    Log.w("Paula","oncreate");
+
 
     sayHelloButton = findViewById(R.id.sayHelloButton);
     goByeButton = findViewById(R.id.goByeButton);
@@ -52,21 +53,21 @@ public class HelloActivity
       presenter.onResumeCalled();
     }*/
 
-    //if(savedInstanceState == null) {
-      //AppMediator.resetInstance();
+    if(savedInstanceState == null) {
+      AppMediator.resetInstance();
       //comentado por mi
-    //}else{
-     // onRestart();
-    //}
+
+  }
+
 
 
 
 
     // do the setup
     HelloScreen.configure(this);
-    if(savedInstanceState == null) {
-      presenter.onResumeCalled();
-    }
+    //if(savedInstanceState == null) {
+     // presenter.onResumeCalled();
+    //}
 
       //AppMediator.resetInstance();
       //comentado por mi
@@ -90,7 +91,7 @@ public class HelloActivity
   @Override
   protected void onStop() {
     super.onStop();
-    Log.w("Paula","onStop");
+
   }
 
 
@@ -107,7 +108,7 @@ public class HelloActivity
   public void navigateToByeScreen() {
     Log.w("llegos","2");
     Intent a = new Intent(this, byeActivity.class);
-    startActivity(a);
+    startActivityForResult(a,requestCode);
 
     Log.w("llegos","5");
   }
@@ -124,7 +125,7 @@ public class HelloActivity
   @Override
   protected void onPause() {
     super.onPause();
-    Log.w("Paula","ismael");
+
 
   }
 

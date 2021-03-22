@@ -104,8 +104,9 @@ public class byeActivity
 
     @Override
     public void navigateToNextScreen() {
-        Intent intent = new Intent(this, HelloActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent();
+        setResult(RESULT_OK,intent);
+        finish();
     }
 
     @Override
