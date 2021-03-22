@@ -19,11 +19,14 @@ public interface HelloContract {
     void onResumeCalled();
     void sayHelloButtonClicked();
     void goByeButtonClicked();
+
+
   }
 
   interface Model {
 
     String getHelloMessage();
+
   }
 
 }

@@ -6,12 +6,14 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import es.ulpgc.eite.cleancode.helloworld.Bye.byeActivity;
 import es.ulpgc.eite.cleancode.helloworld.R;
 import es.ulpgc.eite.cleancode.helloworld.app.AppMediator;
+import es.ulpgc.eite.cleancode.helloworld.app.HelloToByeState;
 
 
 public class HelloActivity
@@ -25,12 +27,15 @@ public class HelloActivity
   Button sayHelloButton, goByeButton;
   TextView helloMessage;
 
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_hello);
 
     getSupportActionBar().setTitle(R.string.hello_screen_title);
+
+    Log.w("Paula","oncreate");
 
     sayHelloButton = findViewById(R.id.sayHelloButton);
     goByeButton = findViewById(R.id.goByeButton);
@@ -43,22 +48,52 @@ public class HelloActivity
     sayHelloButton.setText(getSayHelloButtonLabel());
     goByeButton.setText(getGoByeButtonLabel());
 
-    if(savedInstanceState == null) {
-      AppMediator.resetInstance();
-    }
+    /*if(savedInstanceState != null){
+      presenter.onResumeCalled();
+    }*/
+
+    //if(savedInstanceState == null) {
+      //AppMediator.resetInstance();
+      //comentado por mi
+    //}else{
+     // onRestart();
+    //}
+
+
+
 
     // do the setup
     HelloScreen.configure(this);
+    if(savedInstanceState == null) {
+      presenter.onResumeCalled();
+    }
+
+      //AppMediator.resetInstance();
+      //comentado por mi
+
+
+    //}
 
   }
 
   @Override
   protected void onResume() {
+
     super.onResume();
 
     // do some work
+    Log.w("antes","llega");
     presenter.onResumeCalled();
   }
+
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    Log.w("Paula","onStop");
+  }
+
+
 
   @Override
   public void displayHelloData(HelloViewModel viewModel) {
@@ -87,7 +122,18 @@ public class HelloActivity
   }
 
   @Override
+  protected void onPause() {
+    super.onPause();
+    Log.w("Paula","ismael");
+
+  }
+
+
+
+  @Override
   public void injectPresenter(HelloContract.Presenter presenter) {
     this.presenter = presenter;
   }
+
+
 }

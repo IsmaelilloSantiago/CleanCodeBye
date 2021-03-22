@@ -17,4 +17,6 @@ public class HelloModel implements HelloContract.Model {
     return message;
   }
 
+
+
 }

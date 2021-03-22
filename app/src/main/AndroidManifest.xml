@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Bye.byeActivity">
+    </activity>
+
         <!--<activity android:name=".bye.ByeActivity"/>-->
 
     </application>

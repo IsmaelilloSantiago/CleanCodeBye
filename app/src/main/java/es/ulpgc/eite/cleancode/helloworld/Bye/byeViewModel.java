@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 
 import java.util.Objects;
 
+import es.ulpgc.eite.cleancode.helloworld.R;
 import es.ulpgc.eite.cleancode.helloworld.hello.HelloViewModel;
 
 public class byeViewModel {
@@ -13,7 +14,7 @@ public class byeViewModel {
     // put the view state here
 
 
-    public String byeMessage = "bye";
+    String byeMessage = "bye";
 
     @Override
     public boolean equals( Object obj) {

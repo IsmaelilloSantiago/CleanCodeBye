@@ -14,7 +14,7 @@ public class byeScreen {
         WeakReference<FragmentActivity> context =
                 new WeakReference<>((FragmentActivity) view);
 
-        String data = context.get().getString(R.string.app_name);
+        String data = context.get().getString(R.string.bye_message);
 
         AppMediator mediator = AppMediator.getInstance();
 

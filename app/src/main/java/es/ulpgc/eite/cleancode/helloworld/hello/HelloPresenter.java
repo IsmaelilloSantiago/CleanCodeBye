@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.cleancode.helloworld.Bye.byeState;
 import es.ulpgc.eite.cleancode.helloworld.app.AppMediator;
 import es.ulpgc.eite.cleancode.helloworld.app.ByeToHelloState;
 import es.ulpgc.eite.cleancode.helloworld.app.HelloToByeState;
@@ -65,9 +66,11 @@ public class HelloPresenter implements HelloContract.Presenter {
     HelloToByeState newState = new HelloToByeState(state.helloMessage);
     passDataToByeScreen(newState);
     Log.w("llegos","1");
-    navigateToByeScreen1();
+    navigateToByeScreen();
 
   }
+
+
 
   private ByeToHelloState getDataFromByeScreen() {
     return mediator.getByeToHelloState();
@@ -79,7 +82,7 @@ public class HelloPresenter implements HelloContract.Presenter {
 
   }
 
-  private void navigateToByeScreen1(){
+  private void navigateToByeScreen(){
     //TODO: no implemented
     Log.w("llegos","3");
     view.get().navigateToByeScreen();

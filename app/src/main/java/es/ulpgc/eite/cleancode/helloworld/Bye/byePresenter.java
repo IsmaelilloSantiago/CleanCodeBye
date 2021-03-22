@@ -72,7 +72,7 @@ public class byePresenter implements byeContract.Presenter {
         }
 
         // call the model and update the state
-        //state.data = model.getStoredData();
+        //state.byeMessage = model.getStoredData();
 
         // update the view
         view.get().onDataUpdated(state);
@@ -82,6 +82,8 @@ public class byePresenter implements byeContract.Presenter {
     @Override
     public void onBackPressed() {
         // Log.e(TAG, "onBackPressed()");
+        getStateFromPreviousScreen();
+
     }
 
     @Override
@@ -92,6 +94,36 @@ public class byePresenter implements byeContract.Presenter {
     @Override
     public void onDestroy() {
         // Log.e(TAG, "onDestroy()");
+    }
+
+    @Override
+    public void goHelloBotonClicked() {
+        ByeToHelloState newState = new ByeToHelloState(state.byeMessage);
+        passDataToHelloScreen(newState);
+        navigateToHelloScreen();
+
+
+    }
+
+    @Override
+    public void sayByeBotonClicked() {
+        state.byeMessage = "?";
+        view.get().onDataUpdated(state);
+        startByeMessageAsyncTask();
+    }
+
+    private void startByeMessageAsyncTask() {
+        state.byeMessage = model.getStoredData();
+        Log.w("conejoo",state.byeMessage);
+        view.get().onDataUpdated(state);
+    }
+
+    private void navigateToHelloScreen() {
+        view.get().navigateToNextScreen();
+    }
+
+    private void passDataToHelloScreen(ByeToHelloState newState) {
+        mediator.setByeToHelloState(newState);
     }
 
     private ByeToHelloState getStateFromNextScreen() {

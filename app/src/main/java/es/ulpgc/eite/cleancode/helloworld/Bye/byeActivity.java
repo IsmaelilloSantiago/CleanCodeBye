@@ -3,11 +3,13 @@ package es.ulpgc.eite.cleancode.helloworld.Bye;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import es.ulpgc.eite.cleancode.helloworld.R;
+import es.ulpgc.eite.cleancode.helloworld.hello.HelloActivity;
 
 public class byeActivity
 
@@ -17,6 +19,10 @@ public class byeActivity
     public static String TAG = byeActivity.class.getSimpleName();
 
     private byeContract.Presenter presenter;
+
+    Button botonSayBye;
+    Button botonGoHello;
+    TextView byeMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +38,22 @@ public class byeActivity
       AppMediator.resetInstance();
     }
     */
+        botonGoHello = findViewById(R.id.goHelloButton);
+        botonSayBye = findViewById(R.id.sayByeButton);
+        byeMessage = findViewById(R.id.byeMessage);
+
+
+        botonSayBye.setText(R.string.say_bye_button_label);
+        botonGoHello.setText(R.string.go_hello_button_label);
+
+        botonGoHello.setOnClickListener(v -> presenter.goHelloBotonClicked());
+        botonSayBye.setOnClickListener(v -> presenter.sayByeBotonClicked());
 
         // do the setup
           byeScreen.configure(this);
+
+
+
 
         if (savedInstanceState == null) {
             presenter.onStart();
@@ -43,6 +62,7 @@ public class byeActivity
             presenter.onRestart();
         }
     }
+
 
     @Override
     protected void onResume() {
@@ -84,9 +104,15 @@ public class byeActivity
 
     @Override
     public void navigateToNextScreen() {
-        Intent intent = new Intent(this, byeActivity.class);
+        Intent intent = new Intent(this, HelloActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void displayByeMessage(byeViewModel byeViewModel) {
+
+    }
+
 
     @Override
     public void injectPresenter(byeContract.Presenter presenter) {

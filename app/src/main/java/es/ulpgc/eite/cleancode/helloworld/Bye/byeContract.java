@@ -10,6 +10,9 @@ public interface byeContract {
         void onDataUpdated(byeViewModel viewModel);
 
         void navigateToNextScreen();
+
+
+        void displayByeMessage(byeViewModel byeViewModel);
     }
 
     interface Presenter {
@@ -28,6 +31,10 @@ public interface byeContract {
         void onPause();
 
         void onDestroy();
+
+        void goHelloBotonClicked();
+
+        void sayByeBotonClicked();
     }
 
     interface Model {
